@@ -1,7 +1,10 @@
 name: publish
-on: [push]
+on:
+  push:
+    branches: [main]
+
 jobs:
-  publish-hello-docker-image:
+  publish_image:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -12,7 +15,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           
-      - name: Build the hello-docker Docker image
+      - name: Build server image
         run: |
                docker build . --tag ghcr.io/automateepfl/server:latest
                docker run ghcr.io/automateepfl/server:latest
