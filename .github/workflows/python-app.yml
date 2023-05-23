@@ -2,7 +2,7 @@
 # `branches: [main], then this actions runs _twice_ on pull requests, which is
 # annoying.
 name: test
-on: [main]
+on: [push]
 
 jobs:
   test:
